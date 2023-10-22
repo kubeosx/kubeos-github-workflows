@@ -10,7 +10,7 @@ metadata:
   tags:
     - CI
     - workflows
-    - github actions
+    - github-actions
 spec:
   type: service
   owner: platform-engineering-team
