@@ -44,17 +44,17 @@ jobs:
       - if: steps.dotnettest.outputs.exit_code == 0
         id: dotnetswagger
         name: Run Swagger cli to generate openapi.json
-        working-directory: ${{ inputs.working-directory }}/${{secrets.AppName}}/
+        working-directory: ${{ inputs.working-directory }}/${{secrets.APP_NAME}}/
         run: |
                 ls
                 dotnet tool restore
-                dotnet tool run swagger tofile --output openapi.json bin/Debug/net7.0/${{secrets.AppName}}.dll v1
+                dotnet tool run swagger tofile --output openapi.json bin/Debug/net7.0/${{secrets.APP_NAME}}.dll v1
 
       - name: Upload openapi.json
         uses: actions/upload-artifact@v3
         with:
           name: spec-file
-          path: ${{ inputs.working-directory }}/${{secrets.AppName}}/openapi.json
+          path: ${{ inputs.working-directory }}/${{secrets.APP_NAME}}/openapi.json
 
   update-openapi-spec:
     needs: build-test-openapi
