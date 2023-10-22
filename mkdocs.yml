@@ -1,0 +1,8 @@
+site_name: Kubeos Github Workflow 
+site_description: Kubeos Github Workflow for building dotnet, node , angular.
+
+nav:
+  - Introduction: index.md
+
+plugins:
+  - techdocs-core

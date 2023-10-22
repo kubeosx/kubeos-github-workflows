@@ -1,0 +1,19 @@
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: kubeos-github-workflow
+  description: A CI Repo for all the building, testing, spec updates, docker image. This can be used to build apis built using dotnet, node, go and Front end using angular, blazor, ionic, blazor-wasm all in one place.
+  annotations:
+    github.com/project-slug: kubeosx/kubeos-github-workflow
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - CI
+    - workflows
+    - github actions
+spec:
+  type: service
+  owner: platform-engineering-team
+  lifecycle: experimental
+  dependsOn: ['component:kubeos', component:kubeos-cluster, component:kubeos-baseline]
+  system: kubeos-idp
