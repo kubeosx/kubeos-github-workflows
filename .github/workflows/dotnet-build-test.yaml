@@ -75,8 +75,8 @@ jobs:
       - name: Commit and Push Changes
         uses: EndBug/add-and-commit@v9
         with:
-          author_name: autopr
-          author_email: autopr@kubeosx.com
+          author_name: iamsourabh-in
+          author_email: sourabh.rustagi@hotmail.com
           message: 'Update Open Api Spec'
           add: 'openapi.json'
           
@@ -97,8 +97,8 @@ jobs:
       
       - name: docker build
         run: |
-          docker build ${{ inputs.working-directory }}/${{secrets.AppName}}/ -t  ${{secrets.DOCKER_USER}}/${{secrets.AppName}}:${{ github.run_number  }}
+          docker build ${{ inputs.working-directory }}/${{secrets.APP_NAME}}/ -t  ${{secrets.DOCKER_USER}}/${{secrets.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
       
       - name : docker push
         run: |
-          docker push ${{secrets.DOCKER_USER}}/${{secrets.AppName}}:${{ github.run_number  }}
+          docker push ${{secrets.DOCKER_USER}}/${{secrets.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
