@@ -11,6 +11,16 @@ metadata:
     - ci
     - workflows
     - github-actions
+  links:
+    - url: https://github.com/kubeosx/kubeos-github-workflow
+      icon: web
+      title: Github
+    - url: https://github.com/kubeosx/kubeos-github-workflow/issues
+      icon: web
+      title: Github Issues
+    - url: https://github.com/kubeosx/kubeos-github-workflow/blob/main/README.md
+      title: Docs
+      icon: code
 spec:
   type: service
   owner: platform-engineering-team
