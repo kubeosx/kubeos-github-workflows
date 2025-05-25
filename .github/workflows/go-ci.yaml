@@ -45,11 +45,18 @@ jobs:
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      
+
+      # - name: Validate Docker variables
+      #   run: |
+      #     if [ -z "${{secrets.DOCKER_USER}}" ] || [ -z "${{secrets.CONTAINER_IMAGE_NAME}}" ] || [ -z "${{github.run_number}}" ]; then
+      #       echo "Error: One or more required variables are missing. Ensure DOCKER_USER, CONTAINER_IMAGE_NAME, and github.run_number are set."
+      #       exit 1
+      #     fi
+
       - name: docker build
         run: |
-          docker build ${{ inputs.working-directory }} -t  ${{secrets.DOCKER_USER}}/${{secrets.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
-      
+          docker build ${{ inputs.working-directory }} -t ${{secrets.DOCKER_USER}}/${{vars.CONTAINER_IMAGE_NAME}}:${{ github.run_number }}
+
       - name : docker push
         run: |
           docker push ${{secrets.DOCKER_USER}}/${{vars.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
