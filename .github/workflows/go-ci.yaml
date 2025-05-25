@@ -7,6 +7,11 @@ on:
   pull_request:
     branches:
       - main
+  workflow_call:
+    inputs:
+      working-directory:
+        required: true
+        type: string
 
 jobs:
   build:
@@ -43,8 +48,8 @@ jobs:
       
       - name: docker build
         run: |
-          docker build ${{ inputs.working-directory }}/${{secrets.APP_NAME}}/ -t  ${{secrets.DOCKER_USER}}/${{secrets.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
+          docker build ${{ inputs.working-directory }} -t  ${{secrets.DOCKER_USER}}/${{secrets.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
       
       - name : docker push
         run: |
-          docker push ${{secrets.DOCKER_USER}}/${{secrets.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
+          docker push ${{secrets.DOCKER_USER}}/${{vars.CONTAINER_IMAGE_NAME}}:${{ github.run_number  }}
